@@ -68,6 +68,5 @@ function preload() {
 
   document.body.appendChild(container);
 }
-preload();
 
 export default preload;

@@ -3254,7 +3254,7 @@ module.exports = {
   loadExternal: loadExternal
 };
 
-}).call(this,'1533758288883')
+}).call(this,'1533758568256')
 },{"../lib/settings.js":8}],41:[function(require,module,exports){
 'use strict';
 
@@ -3637,7 +3637,6 @@ function preload() {
 
   document.body.appendChild(container);
 }
-preload();
 
 exports.default = preload;
 
