@@ -1,5 +1,5 @@
 const settings = require('../lib/settings.js');
-const makeEl = require('./makeEl.js');
+import makeEl from './makeEl.js';
 
 function preload() {
 
@@ -52,7 +52,7 @@ function preload() {
       delay: 0,
       endDelay: 0,
       direction: 'alternate',
-      duration: 800,
+      duration: 1500,
       fill: 'forwards',
       easing: 'ease-in-out',
     }

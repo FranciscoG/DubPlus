@@ -1,5 +1,5 @@
 'use strict';
-const makeEl = require('./makeEl.js');
+import makeEl from './makeEl.js';
 
 function makeButtons(cb){
   var dpModalButtons = makeEl('div', {class: 'dp-modal-buttons'});

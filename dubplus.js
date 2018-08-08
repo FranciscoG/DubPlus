@@ -3254,7 +3254,7 @@ module.exports = {
   loadExternal: loadExternal
 };
 
-}).call(this,'1533758568256')
+}).call(this,'1533758972181')
 },{"../lib/settings.js":8}],41:[function(require,module,exports){
 'use strict';
 
@@ -3314,19 +3314,23 @@ exports.default = makeEl;
 },{}],43:[function(require,module,exports){
 'use strict';
 
-var makeEl = require('./makeEl.js');
+var _makeEl = require('./makeEl.js');
+
+var _makeEl2 = _interopRequireDefault(_makeEl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function makeButtons(cb) {
-  var dpModalButtons = makeEl('div', { class: 'dp-modal-buttons' });
+  var dpModalButtons = (0, _makeEl2.default)('div', { class: 'dp-modal-buttons' });
   if (cb) {
-    var cancel = makeEl('button', { id: "dp-modal-cancel" }, 'cancel');
+    var cancel = (0, _makeEl2.default)('button', { id: "dp-modal-cancel" }, 'cancel');
     dpModalButtons.appendChild(cancel);
-    var confirm = makeEl('button', { id: 'dp-modal-confirm' }, 'okay');
+    var confirm = (0, _makeEl2.default)('button', { id: 'dp-modal-confirm' }, 'okay');
     dpModalButtons.appendChild(confirm);
     return dpModalButtons;
   }
 
-  var close = makeEl('button', { id: "dp-modal-cancel" }, 'close');
+  var close = (0, _makeEl2.default)('button', { id: "dp-modal-cancel" }, 'close');
   dpModalButtons.appendChild(close);
   return dpModalButtons;
 }
@@ -3355,20 +3359,20 @@ var create = function create(options) {
    * Create modal html string
    */
 
-  var dpModal = makeEl('div', { class: 'dp-modal' });
+  var dpModal = (0, _makeEl2.default)('div', { class: 'dp-modal' });
 
-  var container = makeEl('aside', { class: 'container' });
+  var container = (0, _makeEl2.default)('aside', { class: 'container' });
 
-  var title = makeEl('div', { class: 'title' });
-  var h1 = makeEl('h1', {}, opts.title);
+  var title = (0, _makeEl2.default)('div', { class: 'title' });
+  var h1 = (0, _makeEl2.default)('h1', {}, opts.title);
   title.appendChild(h1);
 
-  var content = makeEl('div', { class: 'content' });
-  var contentCopy = makeEl('p', {}, opts.content);
+  var content = (0, _makeEl2.default)('div', { class: 'content' });
+  var contentCopy = (0, _makeEl2.default)('p', {}, opts.content);
   content.appendChild(contentCopy);
 
   if (opts.placeholder) {
-    var textarea = makeEl('textarea', { placeholder: opts.placeholder, maxlength: opts.maxlength }, opts.value);
+    var textarea = (0, _makeEl2.default)('textarea', { placeholder: opts.placeholder, maxlength: opts.maxlength }, opts.value);
     content.appendChild(textarea);
   }
 
@@ -3592,10 +3596,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _makeEl2 = require('./makeEl.js');
+
+var _makeEl3 = _interopRequireDefault(_makeEl2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var settings = require('../lib/settings.js');
-var makeEl = require('./makeEl.js');
+
 
 function preload() {
 
@@ -3609,7 +3619,7 @@ function preload() {
   img.src = settings.srcRoot + '/images/dubplus.svg';
   img.alt = "Dub+";
 
-  var icon = makeEl('div', { style: dpIcon });
+  var icon = (0, _makeEl3.default)('div', { style: dpIcon });
   icon.appendChild(img);
 
   // lets add a cool spinny animation if the browser supports the web animation api
@@ -3621,16 +3631,16 @@ function preload() {
       delay: 0,
       endDelay: 0,
       direction: 'alternate',
-      duration: 800,
+      duration: 1500,
       fill: 'forwards',
       easing: 'ease-in-out'
     };
     icon.animate(keyframes, options);
   }
 
-  var span = makeEl('span', { style: dpText }, "Waiting for Dubtrack...");
+  var span = (0, _makeEl3.default)('span', { style: dpText }, "Waiting for Dubtrack...");
 
-  var container = makeEl('div', _defineProperty({ style: dpText, class: 'dubplus-waiting' }, 'style', waitingStyles));
+  var container = (0, _makeEl3.default)('div', _defineProperty({ style: dpText, class: 'dubplus-waiting' }, 'style', waitingStyles));
 
   container.appendChild(icon);
   container.appendChild(span);
