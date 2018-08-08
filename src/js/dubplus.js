@@ -69,7 +69,7 @@ if (!window.dubplus) {
     'Dubtrack.room.users',
   ];
   
-  var _dubplusWaiting = new WaitFor(checkList, { seconds : 10}); // 10sec should be more than enough
+  var _dubplusWaiting = new WaitFor(checkList, { seconds : 120 }); // 2 minutes should be MORE than enough
   
   _dubplusWaiting
     .then(function(){
