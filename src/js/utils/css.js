@@ -4,7 +4,7 @@ var settings = require("../lib/settings.js");
 var makeLink = function(className, FileName){
   var link = document.createElement('link');
   link.rel = "stylesheet"; link.type = "text/css";
-  link.className = className || '';
+  link.className = className ? `dubplus-loaded-css ${className}` : 'dubplus-loaded-css';
   link.href = FileName;
   return link;
 };
@@ -19,7 +19,7 @@ var makeLink = function(className, FileName){
 var load = function(cssFile, className){
   if (!cssFile) {return;}
   var link = makeLink(className, settings.srcRoot + cssFile + "?" + TIME_STAMP);
-  document.head.insertAdjacentElement('beforeend', link);
+  document.head.appendChild(link);
 };
 
 /**
@@ -31,7 +31,7 @@ var load = function(cssFile, className){
 var loadExternal = function(cssFile, className){
   if (!cssFile) {return;}
   var link = makeLink(className, cssFile);
-  document.head.insertAdjacentElement('beforeend', link);
+  document.head.appendChild(link);
 };
 
 module.exports = {

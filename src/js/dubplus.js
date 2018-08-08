@@ -80,7 +80,10 @@ if (!window.dubplus) {
       if (!Dubtrack.session.id) {
         errorModal('You\'re not logged in. Please login to use Dub+.');
       } else {
-        $('.dubplus-waiting span').text('Something happed, refresh and try again');
+        // if the connection is really really slow this will give you the alternative to load the script like a bookmarklet
+        var linkHref = "javascript:(function(){$.getScript('https://rawgit.com/DubPlus/DubPlus/master/dubplus.min.js');})();";
+        var link = `<a style="text-decoration:underline;" href="${linkHref}">click here</a>`
+        $('.dubplus-waiting span').html(`Could not load Dub+, try refreshing or ${link}`);
       }
     });
 

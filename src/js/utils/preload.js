@@ -1,6 +1,7 @@
 const settings = require('../lib/settings.js');
+const makeEl = require('./makeEl.js');
 
-export default function preload() {
+function preload() {
 
   var waitingStyles = [
     'font-family: \'Trebuchet MS\', Helvetica, sans-serif',
@@ -32,16 +33,41 @@ export default function preload() {
     'padding-top:5px'
   ].join(";"); 
 
-  var preloadHTML = `
-    <div class="dubplus-waiting" style="${waitingStyles}">
-      <div style="${dpIcon}">
-        <img src="${settings.srcRoot}/images/dubplus.svg" alt="DubPlus icon">
-      </div>
-      <span style="${dpText}">
-        Waiting for Dubtrack...
-      </span>
-    </div>
-  `;
+  var img = new Image();
+  img.src = `${settings.srcRoot}/images/dubplus.svg`;
+  img.alt = "Dub+";
 
-  document.body.insertAdjacentHTML('afterbegin', preloadHTML);
+  var icon = makeEl('div', {style: dpIcon});
+  icon.appendChild(img);
+
+  // lets add a cool spinny animation if the browser supports the web animation api
+  if ('animate' in icon) {
+    var keyframes = [
+      { transform: 'rotate(0deg)' },
+      { transform: 'rotate(360deg)' },
+    ];
+    var options = {
+      iterations: Infinity,
+      iterationStart: 0,
+      delay: 0,
+      endDelay: 0,
+      direction: 'alternate',
+      duration: 800,
+      fill: 'forwards',
+      easing: 'ease-in-out',
+    }
+    icon.animate(keyframes, options);
+  }
+
+  var span = makeEl('span', {style: dpText}, "Waiting for Dubtrack...");
+
+  var container = makeEl('div', {style: dpText, class: 'dubplus-waiting', style: waitingStyles });
+
+  container.appendChild(icon);
+  container.appendChild(span);
+
+  document.body.appendChild(container);
 }
+preload();
+
+export default preload;

@@ -1,14 +1,19 @@
 'use strict';
+const makeEl = require('./makeEl.js');
 
 function makeButtons(cb){
-  var buttons = '';
+  var dpModalButtons = makeEl('div', {class: 'dp-modal-buttons'});
   if (cb) {
-    buttons += '<button id="dp-modal-cancel">cancel</button>';
-    buttons += '<button id="dp-modal-confirm">okay</button>';
-  } else {
-    buttons += '<button id="dp-modal-cancel">close</button>';
+    var cancel = makeEl('button', {id: "dp-modal-cancel"}, 'cancel');
+    dpModalButtons.appendChild(cancel);
+    var confirm = makeEl('button', {id: 'dp-modal-confirm'}, 'okay');
+    dpModalButtons.appendChild(confirm);
+    return dpModalButtons;
   }
-  return buttons;
+
+  var close = makeEl('button', {id: "dp-modal-cancel"}, 'close');
+  dpModalButtons.appendChild(close);
+  return dpModalButtons;
 }
 
 /**
@@ -34,34 +39,33 @@ var create = function(options) {
   /*****************************************************
    * Create modal html string
    */
+
+  var dpModal = makeEl('div', {class: 'dp-modal'});
   
-  // textarea in our modals are optional.  To add one, using the placeholder option will generate
-  // a textarea in the modal
-  var textarea = '';
+  var container = makeEl('aside', {class: 'container'});
+  
+  var title = makeEl('div', {class: 'title'});
+  var h1 = makeEl('h1', {}, opts.title);
+  title.appendChild(h1);
+
+  var content = makeEl('div', {class: 'content'});
+  var contentCopy = makeEl('p', {}, opts.content);
+  content.appendChild(contentCopy);
+
   if (opts.placeholder) {
-    textarea = '<textarea placeholder="'+opts.placeholder+'" maxlength="'+ opts.maxlength +'">';
-    textarea += opts.value;
-    textarea += '</textarea>';
+    let textarea = makeEl('textarea', {placeholder: opts.placeholder, maxlength : opts.maxlength }, opts.value);
+    content.appendChild(textarea);
   }
 
-  var dubplusModal = [
-    '<div class="dp-modal">',
-      '<aside class="container">',
-        '<div class="title">',
-          '<h1>'+opts.title+'</h1>',
-        '</div>',
-        '<div class="content">',
-          '<p>'+opts.content+'</p>',
-          textarea,
-        '</div>',
-        '<div class="dp-modal-buttons">',
-          makeButtons(opts.confirmCallback),
-        '</div>',
-      '</aside>',
-    '</div>',
-  ].join('');
+  var dpModalButtons = makeButtons(opts.confirmCallback);
 
-  document.body.insertAdjacentHTML('beforeend', dubplusModal);
+  container.appendChild(title);
+  container.appendChild(content);
+  container.appendChild(dpModalButtons);
+
+  dpModal.appendChild(container);
+  
+  document.body.appendChild( dpModal );
 
   /*****************************************************
    * Attach events to your modal
