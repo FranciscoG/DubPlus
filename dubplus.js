@@ -80,7 +80,10 @@ if (!window.dubplus) {
     if (!Dubtrack.session.id) {
       errorModal('You\'re not logged in. Please login to use Dub+.');
     } else {
-      $('.dubplus-waiting span').text('Something happed, refresh and try again');
+      // if the connection is really really slow this will give you the alternative to load the script like a bookmarklet
+      var linkHref = "javascript:(function(){$.getScript('https://rawgit.com/DubPlus/DubPlus/master/dubplus.min.js');})();";
+      var link = '<a style="text-decoration:underline;" href="' + linkHref + '">click here</a>';
+      $('.dubplus-waiting span').html('Could not load Dub+, try refreshing or ' + link);
     }
   });
 } else {
@@ -92,7 +95,7 @@ if (!window.dubplus) {
   }
 }
 
-},{"./lib/init.js":4,"./utils/css.js":40,"./utils/modal.js":42,"./utils/preload.js":46,"./utils/waitFor.js":47}],2:[function(require,module,exports){
+},{"./lib/init.js":4,"./utils/css.js":40,"./utils/modal.js":43,"./utils/preload.js":47,"./utils/waitFor.js":48}],2:[function(require,module,exports){
 "use strict";
 
 /* global  emojify */
@@ -710,7 +713,7 @@ var loadAllModules = function loadAllModules() {
 
 exports.default = loadAllModules;
 
-},{"../lib/menu.js":7,"../lib/settings.js":8,"../modules/index.js":29,"../utils/options.js":45}],6:[function(require,module,exports){
+},{"../lib/menu.js":7,"../lib/settings.js":8,"../modules/index.js":29,"../utils/options.js":46}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -822,7 +825,7 @@ exports.default = function () {
   });
 };
 
-},{"../utils/options.js":45}],7:[function(require,module,exports){
+},{"../utils/options.js":46}],7:[function(require,module,exports){
 'use strict';
 
 var _menuEvents = require('./menu-events.js');
@@ -1028,7 +1031,7 @@ afk_module.extra = function () {
 
 module.exports = afk_module;
 
-},{"../lib/settings.js":8,"../utils/modal.js":42,"../utils/options.js":45}],10:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/modal.js":43,"../utils/options.js":46}],10:[function(require,module,exports){
 'use strict';
 
 var _previewList = require('../emojiUtils/previewList.js');
@@ -1349,7 +1352,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/modal.js":42,"../utils/options.js":45}],13:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/modal.js":43,"../utils/options.js":46}],13:[function(require,module,exports){
 "use strict";
 
 var _notify = require("../utils/notify.js");
@@ -1405,7 +1408,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/notify.js":44}],14:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/notify.js":45}],14:[function(require,module,exports){
 "use strict";
 
 /**
@@ -1517,7 +1520,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/modal.js":42,"../utils/options.js":45}],16:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/modal.js":43,"../utils/options.js":46}],16:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1573,7 +1576,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/css.js":40,"../utils/modal.js":42,"../utils/options.js":45}],17:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/css.js":40,"../utils/modal.js":43,"../utils/options.js":46}],17:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1635,7 +1638,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/modal.js":42,"../utils/options.js":45}],18:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/modal.js":43,"../utils/options.js":46}],18:[function(require,module,exports){
 'use strict';
 
 var settings = require("../lib/settings.js");
@@ -1710,7 +1713,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/modal.js":42,"../utils/options.js":45}],19:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/modal.js":43,"../utils/options.js":46}],19:[function(require,module,exports){
 'use strict';
 
 var _notify = require('../utils/notify.js');
@@ -1775,7 +1778,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../lib/settings.js":8,"../utils/modal.js":42,"../utils/notify.js":44,"../utils/options.js":45}],20:[function(require,module,exports){
+},{"../lib/settings.js":8,"../utils/modal.js":43,"../utils/notify.js":45,"../utils/options.js":46}],20:[function(require,module,exports){
 "use strict";
 
 var _modcheck = require("../utils/modcheck.js");
@@ -1831,7 +1834,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../utils/modcheck.js":43}],21:[function(require,module,exports){
+},{"../utils/modcheck.js":44}],21:[function(require,module,exports){
 "use strict";
 
 /**
@@ -2193,7 +2196,7 @@ myModule.turnOff = function () {
 
 module.exports = myModule;
 
-},{"../utils/notify.js":44}],31:[function(require,module,exports){
+},{"../utils/notify.js":45}],31:[function(require,module,exports){
 "use strict";
 
 var rain = {};
@@ -2941,7 +2944,7 @@ dubshover.turnOff = function () {
 
 module.exports = dubshover;
 
-},{"../utils/modal.js":42,"../utils/modcheck.js":43}],33:[function(require,module,exports){
+},{"../utils/modal.js":43,"../utils/modcheck.js":44}],33:[function(require,module,exports){
 "use strict";
 
 /**
@@ -3073,7 +3076,7 @@ module.exports = {
 
 };
 
-},{"../utils/options.js":45}],36:[function(require,module,exports){
+},{"../utils/options.js":46}],36:[function(require,module,exports){
 "use strict";
 
 /**
@@ -3212,7 +3215,7 @@ var settings = require("../lib/settings.js");
 var makeLink = function makeLink(className, FileName) {
   var link = document.createElement('link');
   link.rel = "stylesheet";link.type = "text/css";
-  link.className = className || '';
+  link.className = className ? 'dubplus-loaded-css ' + className : 'dubplus-loaded-css';
   link.href = FileName;
   return link;
 };
@@ -3229,7 +3232,7 @@ var load = function load(cssFile, className) {
     return;
   }
   var link = makeLink(className, settings.srcRoot + cssFile + "?" + TIME_STAMP);
-  document.head.insertAdjacentElement('beforeend', link);
+  document.head.appendChild(link);
 };
 
 /**
@@ -3243,7 +3246,7 @@ var loadExternal = function loadExternal(cssFile, className) {
     return;
   }
   var link = makeLink(className, cssFile);
-  document.head.insertAdjacentElement('beforeend', link);
+  document.head.appendChild(link);
 };
 
 module.exports = {
@@ -3251,7 +3254,7 @@ module.exports = {
   loadExternal: loadExternal
 };
 
-}).call(this,'1533753359156')
+}).call(this,'1533758288883')
 },{"../lib/settings.js":8}],41:[function(require,module,exports){
 'use strict';
 
@@ -3291,17 +3294,41 @@ var GetJSON = function GetJSON(url, optionalEvent, headers) {
 module.exports = GetJSON;
 
 },{}],42:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function makeEl(el, attr, text) {
+  var elem = document.createElement(el);
+  for (var key in attr) {
+    elem.setAttribute(key, attr[key]);
+  }
+  if (text) {
+    elem.textContent = text;
+  }
+  return elem;
+}
+exports.default = makeEl;
+
+},{}],43:[function(require,module,exports){
 'use strict';
 
+var makeEl = require('./makeEl.js');
+
 function makeButtons(cb) {
-  var buttons = '';
+  var dpModalButtons = makeEl('div', { class: 'dp-modal-buttons' });
   if (cb) {
-    buttons += '<button id="dp-modal-cancel">cancel</button>';
-    buttons += '<button id="dp-modal-confirm">okay</button>';
-  } else {
-    buttons += '<button id="dp-modal-cancel">close</button>';
+    var cancel = makeEl('button', { id: "dp-modal-cancel" }, 'cancel');
+    dpModalButtons.appendChild(cancel);
+    var confirm = makeEl('button', { id: 'dp-modal-confirm' }, 'okay');
+    dpModalButtons.appendChild(confirm);
+    return dpModalButtons;
   }
-  return buttons;
+
+  var close = makeEl('button', { id: "dp-modal-cancel" }, 'close');
+  dpModalButtons.appendChild(close);
+  return dpModalButtons;
 }
 
 /**
@@ -3328,18 +3355,32 @@ var create = function create(options) {
    * Create modal html string
    */
 
-  // textarea in our modals are optional.  To add one, using the placeholder option will generate
-  // a textarea in the modal
-  var textarea = '';
+  var dpModal = makeEl('div', { class: 'dp-modal' });
+
+  var container = makeEl('aside', { class: 'container' });
+
+  var title = makeEl('div', { class: 'title' });
+  var h1 = makeEl('h1', {}, opts.title);
+  title.appendChild(h1);
+
+  var content = makeEl('div', { class: 'content' });
+  var contentCopy = makeEl('p', {}, opts.content);
+  content.appendChild(contentCopy);
+
   if (opts.placeholder) {
-    textarea = '<textarea placeholder="' + opts.placeholder + '" maxlength="' + opts.maxlength + '">';
-    textarea += opts.value;
-    textarea += '</textarea>';
+    var textarea = makeEl('textarea', { placeholder: opts.placeholder, maxlength: opts.maxlength }, opts.value);
+    content.appendChild(textarea);
   }
 
-  var dubplusModal = ['<div class="dp-modal">', '<aside class="container">', '<div class="title">', '<h1>' + opts.title + '</h1>', '</div>', '<div class="content">', '<p>' + opts.content + '</p>', textarea, '</div>', '<div class="dp-modal-buttons">', makeButtons(opts.confirmCallback), '</div>', '</aside>', '</div>'].join('');
+  var dpModalButtons = makeButtons(opts.confirmCallback);
 
-  document.body.insertAdjacentHTML('beforeend', dubplusModal);
+  container.appendChild(title);
+  container.appendChild(content);
+  container.appendChild(dpModalButtons);
+
+  dpModal.appendChild(container);
+
+  document.body.appendChild(dpModal);
 
   /*****************************************************
    * Attach events to your modal
@@ -3382,7 +3423,7 @@ module.exports = {
   close: close
 };
 
-},{}],43:[function(require,module,exports){
+},{"./makeEl.js":42}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3393,7 +3434,7 @@ exports.default = function (userid) {
   return Dubtrack.helpers.isDubtrackAdmin(userid) || Dubtrack.room.users.getIfOwner(userid) || Dubtrack.room.users.getIfManager(userid) || Dubtrack.room.users.getIfMod(userid);
 };
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3488,7 +3529,7 @@ function showNotification(opts) {
   setTimeout(n.close.bind(n), options.wait);
 }
 
-},{"../utils/modal.js":42}],45:[function(require,module,exports){
+},{"../utils/modal.js":43}],46:[function(require,module,exports){
 'use strict';
 
 var settings = require("../lib/settings.js");
@@ -3544,14 +3585,17 @@ module.exports = {
   saveOption: saveOption
 };
 
-},{"../lib/settings.js":8}],46:[function(require,module,exports){
+},{"../lib/settings.js":8}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = preload;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var settings = require('../lib/settings.js');
+var makeEl = require('./makeEl.js');
 
 function preload() {
 
@@ -3561,12 +3605,43 @@ function preload() {
 
   var dpText = ['display: table-cell', 'width: 10000px', 'padding-top:5px'].join(";");
 
-  var preloadHTML = '\n    <div class="dubplus-waiting" style="' + waitingStyles + '">\n      <div style="' + dpIcon + '">\n        <img src="' + settings.srcRoot + '/images/dubplus.svg" alt="DubPlus icon">\n      </div>\n      <span style="' + dpText + '">\n        Waiting for Dubtrack...\n      </span>\n    </div>\n  ';
+  var img = new Image();
+  img.src = settings.srcRoot + '/images/dubplus.svg';
+  img.alt = "Dub+";
 
-  document.body.insertAdjacentHTML('afterbegin', preloadHTML);
+  var icon = makeEl('div', { style: dpIcon });
+  icon.appendChild(img);
+
+  // lets add a cool spinny animation if the browser supports the web animation api
+  if ('animate' in icon) {
+    var keyframes = [{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }];
+    var options = {
+      iterations: Infinity,
+      iterationStart: 0,
+      delay: 0,
+      endDelay: 0,
+      direction: 'alternate',
+      duration: 800,
+      fill: 'forwards',
+      easing: 'ease-in-out'
+    };
+    icon.animate(keyframes, options);
+  }
+
+  var span = makeEl('span', { style: dpText }, "Waiting for Dubtrack...");
+
+  var container = makeEl('div', _defineProperty({ style: dpText, class: 'dubplus-waiting' }, 'style', waitingStyles));
+
+  container.appendChild(icon);
+  container.appendChild(span);
+
+  document.body.appendChild(container);
 }
+preload();
 
-},{"../lib/settings.js":8}],47:[function(require,module,exports){
+exports.default = preload;
+
+},{"../lib/settings.js":8,"./makeEl.js":42}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
