@@ -641,7 +641,7 @@ module.exports = function () {
   (0, _eta2.default)();
 };
 
-}).call(this,'{"name":"DubPlus","version":"0.1.9","description":"Dub+ - A simple script/extension for Dubtrack.fm","author":"DubPlus","license":"MIT","homepage":"https://dub.plus"}')
+}).call(this,'{"name":"DubPlus","version":"0.2.0","description":"Dub+ - A simple script/extension for Dubtrack.fm","author":"DubPlus","license":"MIT","homepage":"https://dub.plus"}')
 },{"../modules/eta.js":22,"../modules/snooze.js":34,"../utils/css.js":40,"./loadModules.js":5,"./menu.js":7}],5:[function(require,module,exports){
 'use strict';
 
@@ -1259,7 +1259,10 @@ autovote.category = "General";
 // add any custom functions to this module
 
 var advance_vote = function advance_vote() {
-  $('.dubup').click();
+  if (Dubtrack && Dubtrack.playerController && Dubtrack.playerController.voteUp) {
+    console.log('voting');
+    Dubtrack.playerController.voteUp.click();
+  }
 };
 
 var voteCheck = function voteCheck(obj) {
@@ -2413,8 +2416,7 @@ dubshover.grabInfoWarning = function () {
 };
 
 dubshover.showDubsOnHover = function () {
-  var _this = this;
-
+  var that = this;
   this.resetDubs();
 
   Dubtrack.Events.bind("realtime:room_playlist-dub", this.dubWatcher.bind(this));
@@ -2534,7 +2536,7 @@ dubshover.showDubsOnHover = function () {
 
     $(document.body).on('click', '.preview-dubinfo-item', function (e) {
       var new_text = $(e.currentTarget).find('.dubinfo-text')[0].innerHTML + ' ';
-      _this.updateChatInputWithString(new_text);
+      that.updateChatInputWithString(new_text);
     });
 
     $('.dubplus-updubs-hover').mouseleave(function (event) {
@@ -2604,7 +2606,7 @@ dubshover.showDubsOnHover = function () {
 
     $(document.body).on('click', '.preview-dubinfo-item', function (e) {
       var new_text = $(e.currentTarget).find('.dubinfo-text')[0].innerHTML + ' ';
-      this.updateChatInputWithString(new_text);
+      that.updateChatInputWithString(new_text);
     });
 
     $('.dubplus-downdubs-hover').mouseleave(function (event) {
@@ -2674,7 +2676,7 @@ dubshover.showDubsOnHover = function () {
 
     $(document.body).on('click', '.preview-dubinfo-item', function (e) {
       var new_text = $(e.currentTarget).find('.dubinfo-text')[0].innerHTML + ' ';
-      this.updateChatInputWithString(new_text);
+      that.updateChatInputWithString(new_text);
     });
 
     $('.dubplus-grabs-hover').mouseleave(function (event) {
@@ -3242,7 +3244,7 @@ module.exports = {
   loadExternal: loadExternal
 };
 
-}).call(this,'1546478658436')
+}).call(this,'1546479070093')
 },{"../lib/settings.js":8}],41:[function(require,module,exports){
 'use strict';
 
