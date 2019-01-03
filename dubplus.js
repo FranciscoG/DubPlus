@@ -641,11 +641,7 @@ module.exports = function () {
   (0, _eta2.default)();
 };
 
-<<<<<<< HEAD
-}).call(this,'{"name":"DubPlus","version":"0.1.6","description":"Dub+ - A simple script/extension for Dubtrack.fm","author":"DubPlus","license":"MIT","homepage":"https://dub.plus"}')
-=======
 }).call(this,'{"name":"DubPlus","version":"0.1.9","description":"Dub+ - A simple script/extension for Dubtrack.fm","author":"DubPlus","license":"MIT","homepage":"https://dub.plus"}')
->>>>>>> 4fb1dc932f114c60199b2e614709f69c656d1fa4
 },{"../modules/eta.js":22,"../modules/snooze.js":34,"../utils/css.js":40,"./loadModules.js":5,"./menu.js":7}],5:[function(require,module,exports){
 'use strict';
 
@@ -919,7 +915,7 @@ module.exports = {
       mainCssClass = "dubplus-menu-icon";
       mainIcon = '<span class="fa fa-' + opts.altIcon + '"></span>';
     }
-    return '\n      <li id="' + opts.id + '" class="' + mainCssClass + ' ' + _state + ' ' + opts.cssClass + ' title="' + opts.desc + '">\n        ' + _extra + '\n        ' + mainIcon + '\n        <span class="dubplus-menu-label">' + menuTitle + '</span>\n      </li>';
+    return '\n      <li id="' + opts.id + '" class="' + mainCssClass + ' ' + _state + ' ' + opts.cssClass + '" title="' + opts.desc + '">\n        ' + _extra + '\n        ' + mainIcon + '\n        <span class="dubplus-menu-label">' + menuTitle + '</span>\n      </li>';
   }
 
 };
@@ -956,11 +952,7 @@ exportSettings.srcRoot = _RESOURCE_SRC_;
 
 module.exports = exportSettings;
 
-<<<<<<< HEAD
-}).call(this,'https://rawgit.com/FranciscoG/DubPlus/dev')
-=======
-}).call(this,'https://cdn.jsdelivr.net/gh/DubPlus/DubPlus')
->>>>>>> 4fb1dc932f114c60199b2e614709f69c656d1fa4
+}).call(this,'https://cdn.jsdelivr.net/gh/FranciscoG/DubPlus')
 },{}],9:[function(require,module,exports){
 'use strict';
 
@@ -3250,11 +3242,7 @@ module.exports = {
   loadExternal: loadExternal
 };
 
-<<<<<<< HEAD
-}).call(this,'1506563330806')
-=======
-}).call(this,'1544453385240')
->>>>>>> 4fb1dc932f114c60199b2e614709f69c656d1fa4
+}).call(this,'1546478658436')
 },{"../lib/settings.js":8}],41:[function(require,module,exports){
 'use strict';
 
