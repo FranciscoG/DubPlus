@@ -11093,7 +11093,7 @@ var DubPlus = (function () {
       });
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyup", function (e) {
-        var key = "which" in e ? e.which : e.keyCode;
+        var key = e.which;
 
         if ((_this.state.emojiShow || _this.state.twitchShow) && key === 27) {
           _this.setState({
@@ -11286,7 +11286,7 @@ var DubPlus = (function () {
     function UserSettings() {
       _classCallCheck(this, UserSettings);
 
-      _defineProperty(this, "srcRoot", "https://cdn.jsdelivr.net/gh/DubPlus/DubPlus@beta");
+      _defineProperty(this, "srcRoot", "https://cdn.jsdelivr.net/gh/FranciscoG/DubPlus@adding-tests");
 
       var _savedSettings = localStorage.getItem('dubplusUserSettings');
 
@@ -11648,6 +11648,17 @@ var DubPlus = (function () {
 
     return MenuPencil;
   }(Component);
+  /**
+   * Component to render a simple row like the fullscreen menu option
+   * @param {object} props
+   * @param {string} props.id the dom ID name, usually dubplus-*
+   * @param {string} props.desc description of the menu item used in the title attr
+   * @param {string} props.menuTitle text to display in the menu
+   * @param {string} props.section which menu section this item is part of
+   * @param {Function} props.turnOn function to run when switch is turned on
+   * @param {Function} props.turnOff function to run when switch is turned off
+   */
+
   var MenuSwitch =
   /*#__PURE__*/
   function (_Component3) {
@@ -12164,7 +12175,7 @@ var DubPlus = (function () {
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "checkInput", function (e) {
         // we want to ignore keyups that don't output anything
-        var key = "which" in e ? e.which : e.keyCode;
+        var key = e.which;
 
         if (ignoreKeys.indexOf(key) >= 0) {
           return;
@@ -12218,7 +12229,7 @@ var DubPlus = (function () {
           return true;
         }
 
-        var key = "which" in e ? e.which : e.keyCode;
+        var key = e.which;
 
         switch (key) {
           case KEYS.down:
@@ -13881,9 +13892,8 @@ var DubPlus = (function () {
   }(Component);
 
   /**
-   * Wrapper around XMLHttpRequest with added ability to trigger a custom event 
-   * when the ajax request is complete. The event will be attached to the window 
-   * object. It returns a promise.
+   * Pure JS implementation of $.getJSON but it returns an actual native
+   * JS Promise
    * 
    * @param {String} url 
    * @param {Object} headers object of xhr headers to add to the request
@@ -14898,7 +14908,7 @@ var DubPlus = (function () {
       return;
     }
 
-    var link = makeLink(className, userSettings.srcRoot + cssFile + "?" + 1550706401389);
+    var link = makeLink(className, userSettings.srcRoot + cssFile + "?" + 1550810728474);
     document.head.appendChild(link);
   }
   /**

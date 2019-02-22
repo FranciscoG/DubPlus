@@ -19,6 +19,7 @@ describe("twitch emote tests", () => {
   test("Should return an array of matches", () => {
     let matches = twitch.find("kap");
     expect(matches.length > 0).toBe(true);
+    expect(Array.isArray(matches)).toEqual(true);
     expect(matches[0].type).toEqual("twitch");
   });
 });

@@ -50,7 +50,7 @@ export default class AutocompleteEmoji extends Component {
    */
   checkInput = e => {
     // we want to ignore keyups that don't output anything
-    const key = "which" in e ? e.which : e.keyCode;
+    const key = e.which;
     if (ignoreKeys.indexOf(key) >= 0) {
       return;
     }
@@ -188,7 +188,7 @@ export default class AutocompleteEmoji extends Component {
       return true;
     }
 
-    const key = "which" in e ? e.which : e.keyCode;
+    const key = e.which;
     switch (key) {
       case KEYS.down:
       case KEYS.tab:

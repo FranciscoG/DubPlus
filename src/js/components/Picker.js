@@ -51,7 +51,7 @@ class Picker extends Component {
   };
 
   handleKeyup = e => {
-    var key = "which" in e ? e.which : e.keyCode;
+    var key = e.which;
     if ((this.state.emojiShow || this.state.twitchShow) && key === 27) {
       this.setState({
         emojiShow: false,

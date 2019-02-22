@@ -1,7 +1,6 @@
 /**
- * Wrapper around XMLHttpRequest with added ability to trigger a custom event 
- * when the ajax request is complete. The event will be attached to the window 
- * object. It returns a promise.
+ * Pure JS implementation of $.getJSON but it returns an actual native
+ * JS Promise
  * 
  * @param {String} url 
  * @param {Object} headers object of xhr headers to add to the request

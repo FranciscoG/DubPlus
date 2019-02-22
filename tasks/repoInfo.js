@@ -5,13 +5,11 @@ const sync = require('child_process').spawnSync;
 const log = require('./colored-console.js');
 
 /*
-  --release
-  add this to the END to force jsDelivr to point to DubPlus/DubPlus/master
-  example: node ./tasks bundle --release
+  BUILD=release
+  force jsDelivr to point to DubPlus/DubPlus/master
   
-  --local URL
-  add this flag to the END to use given URL during testing (like localhost)
-  example: node ./tasks sass --local http://localhost:3001
+  BUILD=beta
+  force jsDelivr to point to DubPlus/DubPlus/beta
  */
 
 var releaseFlag = process.env.BUILD === "release";
@@ -27,17 +25,16 @@ var CURRENT_BRANCH = info.branch;
 var resourceSrc;
 var CURRENT_REPO;
 if (CURRENT_BRANCH === 'master' || releaseFlag) {
-  // if we're in master that means we're ready to send a PR to the
-  // main repo and we should always be set to DubPlus/DubPlus
+  // master branch or the release flag build always points to gh-pages branch
   CURRENT_REPO = 'DubPlus';
-  resourceSrc = `https://cdn.jsdelivr.net/gh/${CURRENT_REPO}/DubPlus`;
+  resourceSrc = `https://dubplus.github.io/DubPlus`;
 } else if (CURRENT_BRANCH === 'beta' || betaFlag) {
   // DubPlus/DubPlus@beta
   CURRENT_REPO = 'DubPlus';
   resourceSrc = `https://cdn.jsdelivr.net/gh/${CURRENT_REPO}/DubPlus@beta`;
 } else {
-  /***************************************
-   * Get the github user name 
+  /******************************************************************************
+   * Get the github user name of your personal user, not the DubPlus organization
    * github.com/DubPlus/DubPlus/branch
    *            ^^^^^^^ I want to get this 
    */
@@ -46,7 +43,7 @@ if (CURRENT_BRANCH === 'master' || releaseFlag) {
   resourceSrc = `https://cdn.jsdelivr.net/gh/${CURRENT_REPO}/DubPlus@${CURRENT_BRANCH}`;
 }
 
-var payload = `//cdn.jsdelivr.net/gh/${CURRENT_REPO}/DubPlus@${CURRENT_BRANCH}/dubplus.min.js`;
+var payload = `${resourceSrc}/dubplus.min.js`;
 var jsBookmarklet = `javascript:var i,d=document,s=d.createElement('script');s.src="${payload}";d.body.appendChild(s);void(0);`;
 
 log.info('****************************************************************');

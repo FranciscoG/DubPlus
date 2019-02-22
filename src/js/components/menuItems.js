@@ -114,6 +114,16 @@ export class MenuPencil extends Component {
   }
 }
 
+/**
+ * Component to render a simple row like the fullscreen menu option
+ * @param {object} props
+ * @param {string} props.id the dom ID name, usually dubplus-*
+ * @param {string} props.desc description of the menu item used in the title attr
+ * @param {string} props.menuTitle text to display in the menu
+ * @param {string} props.section which menu section this item is part of
+ * @param {Function} props.turnOn function to run when switch is turned on
+ * @param {Function} props.turnOff function to run when switch is turned off
+ */
 export class MenuSwitch extends Component {
   state = {
     on: settings.stored.options[this.props.id] || false
