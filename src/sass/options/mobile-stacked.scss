@@ -1,0 +1,83 @@
+
+@media screen and (max-width: 48em) and (min-height: 75em) {
+
+  .dp-option-stacked #mobile-room-menu {
+
+    display: none;
+
+  }
+  
+  /* wraps the player and chat */
+  
+  .dp-option-stacked #main-room .main-room-wrapper {
+
+    display: flex;
+    flex-direction :column;
+    -webkit-flex-direction :column;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+
+}
+  
+
+  /* the player container */
+
+  .dp-option-stacked #main-room .left_section {
+
+    display: block;
+    min-height: inherit;
+    margin-top: 1.2rem;
+    position: initial;
+    height: 39%;
+    flex: 0;
+    margin-bottom: 10px;
+
+  }
+
+  /* the  chat container */
+
+  .dp-option-stacked #main-room .right_section {
+
+    display: block;
+    position: initial;
+    position: auto;
+    margin-bottom: 0;
+		flex: 1;
+    overflow-y:  auto;
+
+  }
+
+  /* the queue and join buttonns */
+
+  .dp-option-stacked #main_player .play-song-link-container {
+
+    display: flex;
+		position: relative;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    bottom: 0;
+    max-height: 44px;
+  }
+
+  .dp-option-stacked #main_player .play-song-link-container .play-song-link-browser {
+
+    margin-bottom: 0;
+
+    flex: 1;
+
+  }
+
+  .dp-option-stacked #main_player .play-song-link-container .play-song-link.active-queue-display {
+
+    flex: 1;
+
+  }
+  
+  .dp-option-stacked  #main_player .play-song-link-container .play-song-link,
+  .dp-option-stacked  #main_player .play-song-link-container .play-song-link-browser {
+
+    padding: 0.45rem 2rem;
+
+	}
+
+}
