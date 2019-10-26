@@ -17,8 +17,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && npm run build && git add .",
-      "post-merge": "npm test && npm run build && git add ."
+      "pre-commit": "./tasks/checkSrc.sh npm test && npm run build && git add .",
+      "post-merge": "./tasks/checkSrc.sh npm test && npm run build && git add ."
     }
   },
   "repository": {
